@@ -54,9 +54,10 @@ class Agent:
             "可以引用具体论文、数据、技术框架。如果需要查证最新信息，使用 web_search 工具。",
             "不要总是同意别人，要有独到见解，可以质疑和反驳。",
             "用中文回复。",
+            "你的发言必须紧紧围绕讨论话题，不要跑题。",
         ]
         if topic:
-            system_parts.append(f"当前讨论话题：{topic}")
+            system_parts.insert(1, f"🎯 本次讨论话题：{topic}。请始终围绕这个话题展开讨论。")
 
         response = self.client.messages.create(
             model=self.model,

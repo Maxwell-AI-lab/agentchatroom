@@ -82,6 +82,10 @@ def chat_loop(agent_names: list[str], topic: str | None, rounds: int):
         if not room_active:
             break
 
+        # Remind topic at the start of each round
+        if topic and round_num > 0:
+            add_message("系统", f"📌 讨论话题提醒：{topic}", "system")
+
         round_had_message = False
         for name in agent_names:
             # Wait here while paused
